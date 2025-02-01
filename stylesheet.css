@@ -1,0 +1,9 @@
+body {
+    background-image: url("images/tempBG.png");
+	/* background-repeat: no-repeat; */
+	/* background-size: cover; */
+	/* line-height: 1.35; */
+	font-family: Tahoma, sans-serif;
+	background-attachment: fixed;
+	background-position: center;
+}
