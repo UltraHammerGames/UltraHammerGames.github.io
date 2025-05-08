@@ -1,0 +1,167 @@
+.gameDiv {
+	position: relative;
+	background-size: cover;
+	width: 90%;
+    height: 0%;
+	margin: auto;
+	color: white;
+	margin-top: 25px;
+    margin-bottom: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.gameDiv::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.gameDiv p {
+	margin-left: 2%;
+}
+
+.gameDiv h2 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 2.5%;
+	margin-left: 2.5%;
+	width: 100%;
+	font-size: clamp(1rem, 5vw, 4rem);
+	margin-left: 2%;
+}
+
+.gameDivScrollPoint {
+	position: absolute; 
+	top: -150px; 
+	z-index: 10;
+}
+
+.gameDivTitle {
+	width: 100%;
+	margin-left: 4vw;
+}
+
+.gameDivHalf {
+	margin: auto; 
+	float: left; 
+	min-width: 315px;
+    font-size: 1.5vw;
+	margin-left: 5vw;
+}
+
+.gameDivHalf p {
+    color: #bbb;
+	font-size: 0.8em;
+	padding-top: 1.5vw;
+	margin-left: 0.5vw;
+}
+
+.gameDivHalf h3 {
+	font-size: 0.8em;
+    margin-top: 1.5%;
+    margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+.gameDivHalf h4 {
+	font-family: 'ComicHelvetic';
+    margin-left: 0.75vw;
+    margin-top: 0.75vw;
+    margin-bottom: 0px;
+    font-size: 0.75em;
+}
+
+.gameDivHalf ul {
+	margin-top: 0.5vw;
+	padding-left: 2vw;
+	list-style-type: "👽";
+}
+
+.gameDivHalf li {
+	font-family: "ComicHelvetic";
+	font-size: 0.7em;
+	text-decoration: none;
+}
+
+.gameDivHalf li a {
+	font-family: "ComicHelvetic";
+	font-size: 0.9em;
+	text-decoration: none;
+	color: #99ccff;
+}
+
+.gameDivHalfRow {
+    display: flex;
+    align-items: center;
+}
+
+.gameDivScreenshotSection {
+	width: 100%;
+	text-align: center;
+	padding: 10px 0px 0px 0px;
+	font-size: 0;
+}
+
+.gameDivScreenshotParent {
+	width: 20%;
+	min-width: 10.25vw;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 10px;
+	font-size: initial;
+}
+
+.gameDivHalfScreenshot {
+	width: 90%;
+	display: block;
+	margin: auto;
+	border: 2px solid white;
+	box-shadow: 2px 2px #000;
+	cursor: pointer;
+}
+
+.gameDivHalfScreenshot:hover {
+	transform: scale(1.05);
+    box-shadow: 0px 0px #000;
+}
+
+.gameDivHalfScreenshotBig {
+	width: 95%;
+	min-width: 13.25vw;
+	padding-bottom: 15px;
+	margin: auto;
+}
+
+.gameDivHalfScreenshotBig img {
+	width: 95%;
+	display: block;
+	margin: auto;
+	border: 3px solid white;
+}
+
+.gameDivPlatformParent {
+	width: 100%;
+    margin-left: 0.75vw;
+}
+
+.gameDivPlatformParent a {
+	text-decoration: none;
+    outline: none;
+}
+
+.gameDivPlatform {
+	width: 8%;
+	min-width: 3.5vw;
+	padding-left: 0.25vw;
+	padding-right: 0.5vw;
+	border: 0px solid white;
+    box-shadow: 0px 0px #000;
+	filter: grayscale(100%);
+	margin: auto;
+}
+
+.gameDivPlatform:hover {
+	transform: scale(1.15);
+	filter: grayscale(0%);
+}

@@ -1,0 +1,145 @@
+.header {
+	width: 85%;
+	max-width: 1500px;
+	min-height: 125px;
+	background-color: #e6f3ff;
+	position: sticky;
+	margin: auto;
+	top: -1px;
+	border-bottom: 5px solid #99ccff;
+	z-index: 5;
+}
+
+.headerLogo {
+	height: 75px;
+	margin: auto;
+	float: left;
+	margin-left: 5%;
+	margin-top: 20px;
+	min-height: 15%;
+}
+
+.headerEmail {
+	width: 5%;
+	min-width: 35px;
+	position: absolute;
+	bottom: 25%;
+	right: 7.5%;
+	cursor: pointer;
+}
+
+.headerEmail:hover {
+	transform: scale(1.15);
+}
+
+.headerLeftBehind {
+	width: 102.15%;
+	height: 25%;
+    background: #99ccff;
+	position: absolute;
+	left: -2%;
+    bottom: -16%;
+	padding-bottom: 1px;
+    border-radius: 25px;
+}
+
+.headerLeft {
+	width: 5%;
+	height: 102.5%;
+    background: linear-gradient(to right, #99ccff 20%, #e6f3ff 100%);
+	position: absolute;
+	left: -2%;
+	padding-bottom: 1px;
+}
+
+.headerRight {
+	width: 5%;
+	height: 102.5%;
+    background: linear-gradient(to left, #99ccff 20%, #e6f3ff 100%);
+	position: absolute;
+	right: -2px;
+	padding-bottom: 1px;
+}
+
+.headerBottom {
+	width: 98%;
+	height: 35px;
+    background: linear-gradient(to top, transparent 40%, #e6f3ff 80%);
+	position: absolute;
+	margin: auto;
+	bottom: -20px;
+	left: 0px;
+	border-radius: 0px 0px 30px 30px;
+}
+
+.headerLeftBottom {
+	width: 25px;
+	min-width: 10%;
+	height: 25px;
+    background: radial-gradient(farthest-side at 90% 5%, #e6f3ff, #e6f3ff, #99ccff);
+	position: absolute;
+	bottom: -5px;
+	left: -1%;
+}
+
+.headerRightBottom {
+	width: 25px;
+	min-width: 10%;
+	height: 25px;
+    background: radial-gradient(farthest-side at 10% 5%, #e6f3ff, #e6f3ff, #99ccff);
+	position: absolute;
+	bottom: -5px;
+	right: 0.5%;
+}
+
+/* ======================================================================================================================== */
+
+.footer {
+	width: 100%;
+	max-width: 1500px;
+	min-height: 125px;
+	background-color: #000;
+	position: relative;
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 0;
+	padding-bottom: 2%;
+}
+
+.footer p {
+	color: white;
+}
+
+.footer img {
+	width: 800px;
+	max-width: 89.5%;
+	margin-left: 5.5%;
+	margin-bottom: 0;
+    transition: transform 0.1s ease-in-out;
+}
+
+.footerTop {
+	width: 100%;
+	height: 25px;
+    background: linear-gradient(to bottom, transparent 40%, #000 90%);
+	position: relative;
+	top: -22.5px;
+	left: 0;
+	right: 0;
+}
+
+.footerTable {
+	margin-top: 0;
+	margin-left: 5.5%;
+	width: 90%;
+	max-width: 600px;
+	margin-top: 25px;
+}
+
+.footer th {
+	padding-right: 3%;
+}
+
+.footerTable img:hover {
+	transform: scale(1.25);
+}

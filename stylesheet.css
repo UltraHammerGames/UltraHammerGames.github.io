@@ -1,13 +1,43 @@
 body {
     background-image: url("images/bg.png");
-	/* background-color: #3366ff; */
-	/* background-repeat: no-repeat; */
-	/* background-size: cover; */
-	/* line-height: 1.35; */
 	font-family: Tahoma, sans-serif;
 	background-attachment: fixed;
 	background-position: center;
 	margin: 0;
+	height: 100%;
+}
+
+p {
+	font-family: ComicHelvetic;
+	margin-left: 7.5%; 
+	margin-right: 7.5%; 
+	margin-top: 0px;
+}
+
+p a {
+	color: #0033cc;
+	text-decoration: none;
+}
+
+h1 {
+	margin-left: 5%; 
+	margin-top: 30px;
+	margin-bottom: 15px;
+	font-family: CheyenneSans;
+	font-size: 2em;
+	color: #3366ff;
+	padding-left: 1%;
+	text-shadow: 2px 2px  0 #66b3ff, 2px 0 #66b3ff
+}
+
+h3 {
+	margin-left: 5%; 
+	margin-top: 30px;
+	margin-bottom: 15px;
+	font-family: MessingLettern;
+	font-size: 2em;
+	color: white;
+	padding-left: 1%;
 }
 
 .bodyDiv {
@@ -20,100 +50,307 @@ body {
 	padding-top: none;
 }
 
-.header {
-	width: 85%;
-	max-width: 1500px;
-	min-height: 125px;
-	background-color: #e6f3ff;
-	position: sticky;
-	margin: auto;
-	top: 0px;
-	border-bottom: 5px solid #99ccff;
-}
-
-.headerLogo {
-	height: 75px;
-	margin: auto;
-	float: left;
-	margin-left: 5%;
-	margin-top: 20px;
-	min-height: 15%;
-}
-
-.headerLeft {
-	width: 5%;
-	height: 100%;
-    background: linear-gradient(to right, #99ccff 20%, #e6f3ff 100%);
-	position: absolute;
-	left: -2%;
-	padding-bottom: 1px;
-}
-
-.headerRight {
-	width: 5%;
-	height: 100%;
-    background: linear-gradient(to left, #99ccff 20%, #e6f3ff 100%);
-	position: absolute;
-	right: -2px;
-	padding-bottom: 1px;
-}
-
-.headerBottom {
-	width: 98%;
-	height: 35px;
-    background: linear-gradient(to top, #99ccff 40%, #e6f3ff 80%);
-	position: absolute;
-	margin: auto;
-	bottom: -20px;
-	left: 0px;
-	border-radius: 0px 0px 30px 30px;
-}
-
-.headerLeftBottom {
-	width: 25px;
-	min-width: 10%;
-	height: 25px;
-    background: radial-gradient(farthest-side at 90% 5%, #e6f3ff, #e6f3ff, #99ccff);
-	position: absolute;
-	bottom: -5px;
-	left: -1%;
-}
-
-.headerRightBottom {
-	width: 25px;
-	min-width: 10%;
-	height: 25px;
-    background: radial-gradient(farthest-side at 10% 5%, #e6f3ff, #e6f3ff, #99ccff);
-	position: absolute;
-	bottom: -5px;
-	right: 0.5%;
-}
-
-.footer {
-	width: 100%;
-	height: 50px;
-	/* background-color: #cce6ff; */
-	background: linear-gradient(to top, #000000 0%, #99ccff 70%);
-}
-
 .bodyDivLeft {
 	width: 5%;
 	height: 100%;
-	/* background-color: red; */
-	background: linear-gradient(to left, #99ccff 0%, #3366ff 90%);
+	background: linear-gradient(to left, transparent 0%, #3366ff 90%);
 	position: absolute;
 	left: -2px;
+	z-index: 5;
 }
 
 .bodyDivRight {
 	width: 5%;
 	height: 100%;
-	/* background-color: red; */
-	background: linear-gradient(to right, #99ccff 0%, #3366ff 90%);
+	background: linear-gradient(to right, transparent 0%, #3366ff 90%);
 	position: absolute;
 	right: -2px;
+	z-index: 5;
 }
+
 .bodyDivMiddle {
-	padding-left: 5%;
-	min-height: 800px;
+	margin-top: 30px;
+}
+
+.bannerDiv {
+	width: 1200px;
+	max-width: 90%;
+	position: relative;
+	margin: auto;
+	background-color: white;
+}
+
+.bannerImagesContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bannerImagesWrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.bannerImage {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0;
+}
+
+.bannerLink {
+	display: block;
+    position: relative;
+    z-index: 2;
+}
+
+.bannerDivInner {
+	position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+}
+
+.bannerDivInner img {
+	height: 20%;
+	opacity: 0.75;
+	top: 40%;
+	width: auto;
+	position: absolute;
+    z-index: 4;
+    cursor: pointer;
+}
+
+.bannerDivInner img:hover { 
+	opacity: 0.85;
+}
+
+.bannerDivDot {
+	width: 20px;
+	height: 20px;
+	background-color: rgba(255, 255, 255, 0.75);
+	border-radius: 50%;
+	position: absolute;
+    z-index: 4;
+	left: 0;
+	right: 0;
+	margin-left:auto;
+	margin-right:auto;
+	bottom: 10px;
+}
+
+.bannerDivLeft {	
+	width: 15%;
+	height: 105%;
+	background: linear-gradient(to left, transparent 0%, #99ccff 80%);
+	position: absolute;
+	left: -2px;
+	bottom: -1px;
+}
+
+.bannerDivRight {	
+	width: 15%;
+	height: 105%;
+	background: linear-gradient(to right, transparent 0%, #99ccff 80%);
+	position: absolute;
+	right: -2px;
+	bottom: -1px;
+}
+
+.bannerDivTop {	
+	width: 100%;
+	height: 15%;
+	background: linear-gradient(to top, transparent 0%, #99ccff 90%);
+	position: absolute;
+	right: -2px;
+	top: -1px;
+}
+
+.bannerDivBottom {
+	width: 100%;
+	height: 15%;
+	background: linear-gradient(to bottom, transparent 0%, #99ccff 90%);
+	position: absolute;
+	right: -2px;
+	bottom: -1px;
+}
+
+.gamesCatalogueContainer {
+    display: flex;
+	position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+	margin-bottom: 10px;
+	padding-bottom: 25px;
+}
+
+.gamesCatalogueViewport {
+    width: 85%;
+    overflow-x: hidden;
+}
+
+.gamesCatalogueWrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.gamesCatalogueItem {
+    width: 30%;
+    margin: 0 0.5%;
+    box-shadow: 6px 6px;
+    cursor: pointer;
+    border: 2px solid white;
+    transition: width 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+}
+
+.gamesCatalogueItem:hover {
+	border: 3px solid yellow;
+    box-shadow: 7.5px 7.5px;
+}
+
+.gamesCatalogueItem.shrink {
+    width: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.gamesCatalogueItemEmpty {
+    width: 30%;
+    margin: 0 0.5%;
+    cursor: pointer;
+    border: 2px dashed white;
+    transition: width 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+}
+
+.gamesCatalogueArrow {
+	height: 20%;
+	opacity: 0.75;
+	width: auto;
+	position: absolute;
+    z-index: 4;
+    cursor: pointer;
+}
+
+.gamesCatalogueTable {
+	margin-left: 7.5%;
+	font-family: ComicHelvetic;
+	width: 80%;
+	max-width: 400px;
+	margin: auto;
+}
+
+.gamesCatalogueTable th {
+	text-align: left;
+	vertical-align: top;
+	font-size: 0.9em;
+}
+
+.gamesCatalogueTable p {
+	font-size: 1.35em;
+	margin: 0px;
+	padding-top: 0px;
+}
+
+.aboutDiv {
+	margin-bottom: 40px;
+}
+
+.emailDiv {
+	position: fixed;
+    top: 0;
+    left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.75);
+	z-index: 5;
+
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.emailDiv h1 {
+	color: black;
+	text-align: center;
+	font-size: 2.75em;
+	margin-right: 5%;
+	margin-top: 10px;
+	text-shadow: 0;
+}
+
+.emailDiv h2 {
+	font-size: 1.5em;
+	margin: 10px;
+	margin: auto;
+	float: left;
+	color: white;
+	text-shadow: 1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+	1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+}
+
+.emailDiv h3 {
+	font-family: Tahoma, sans-serif;
+	font-size: 1.5em;
+	margin: 10px;
+}
+
+.emailDiv button {
+    background-color: black;
+    color: white;
+    border: 0;
+    border-radius: 25px;
+    cursor: pointer;
+	margin-top: 15px;
+}
+
+.emailDiv select {
+	width: 15vw;
+	min-width: 160px;
+	height: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+	font-family: ComicHelvetic;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin: auto;
+	float: left;
+	margin-left: 15px;
+}
+
+.emailDiv textarea {
+	width: 60%;
+	max-width: 400px;
+	min-height: 25vh;
+    border: 2px solid black;
+    border-radius: 10px;
+	font-family: ComicHelvetic;
+	margin: auto;
+	padding: 7.5px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.emailDiv button:hover {
+	transform: scale(1.15);
+	background-color: #0033cc;
+}
+
+.emailDiv button:disabled {
+	background-color: #777;
+    cursor: default;
+}
+
+.emailDiv button:disabled:hover {
+	transform: scale(1);
+}
+
+.emailDivSection {
+	margin-bottom: 15px;
 }

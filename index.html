@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Ultra Gammer Games </title>
+    <link rel="stylesheet" type="text/css" href="fonts.css"/>
     <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="headerAndFooter.css"/>
+    <link rel="stylesheet" type="text/css" href="gameDiv.css"/>
     <link rel="icon" href="images/icon.png">
 </head>
 <body>
@@ -12,17 +15,156 @@
         <div class="bodyDivLeft"></div>
         <div class="bodyDivRight"></div>
         <div class="header">
-            <div class="headerLeft"></div>
-            <div class="headerRight"></div>
-            <div class="headerBottom"></div>
-            <div class="headerLeftBottom"></div>
-            <div class="headerRightBottom"></div>
-            <img class="headerLogo" src="images/icon.png">
+            <div class="headerLeftBehind"></div> 
+            <div class="headerLeft"></div> <div class="headerRight"></div> <div class="headerBottom"></div> <div class="headerLeftBottom"></div> <div class="headerRightBottom"></div>
+            <img class="headerLogo" src="images/logo.png">
+            <img class="headerEmail" src="images/social_icons/logo_email.png" title="Send an email"> 
         </div>
-        <br>
-        <div class="bodyDivMiddle">            
-            <h1 style = "margin-left: 15px; margin-top: 0px;"> Under construction... </h1>
+        <div class="bodyDivMiddle">
+            <div class="bannerDiv">                
+                <div class="bannerDivInner"> 
+                    <img src="images/bannerLeft.png" id="bannerLeft" style="left: 2.5%;">
+                    <img src="images/bannerRight.png" id="bannerRight" style="right: 3.5%;">
+                    <span class="bannerDivDot" style="right: 65px;"></span>
+                    <span class="bannerDivDot"></span>
+                    <span class="bannerDivDot" style="left: 65px;"></span>
+                </div>
+
+                <div class="bannerImagesContainer">
+                    <div class="bannerImagesWrapper">
+                        <img class="bannerImage" src="images/banner0.png">
+                        <img class="bannerImage" src="images/banner1.png">
+                        <img class="bannerImage" src="images/banner2.png">
+                        <img class="bannerImage" src="images/banner3.png" style="cursor: pointer;">
+                    </div>
+                </div>
+
+                <div class="bannerDivLeft"></div>
+                <div class="bannerDivRight"></div>
+            </div>
+            
+            <h1 style="margin-top: 50px;"> GAMES CATALOGUE </h1>
+            <div class="gamesCatalogueContainer">
+                <img class="gamesCatalogueArrow" src="images/bannerLeft.png" id="gameCatalogueLeft" style="left: 6%;">
+                <img class="gamesCatalogueArrow" src="images/bannerRight.png" id="gameCatalogueRight" style="right: 7.5%;">
+
+                <div class="gamesCatalogueViewport">
+                    <div class="gamesCatalogueWrapper">
+                        <img class="gamesCatalogueItem" src="images/game_covers/xeno_duel_cover.png" 
+                            onclick="gameCatalogueButton('xeno_duel')" data-genres="Strategy" data-players="Multiplayer" data-platforms="ios, Android">
+                        <img class="gamesCatalogueItem" src="images/game_covers/soleil_survivor_cover.png" 
+                            onclick="gameCatalogueButton('soleil_survivor')" data-genres="3D, Action" data-players="Singleplayer" data-platforms="Steam, itch.io">
+                        <img class="gamesCatalogueItem" src="images/game_covers/descendant_cover.png" 
+                            onclick="gameCatalogueButton('descendant')" data-genres="RPG, Rougelite" data-players="Singleplayer" data-platforms="Steam, itch.io">
+                        <img class="gamesCatalogueItem" src="images/game_covers/scrabbleman_cover.png" 
+                            onclick="gameCatalogueButton('scrabbleman')" data-genres="Puzzle, Spelling" data-players="Singleplayer" data-platforms="Steam, itch.io">
+                        <img class="gamesCatalogueItem" src="images/game_covers/default_cover.png" style="border: 3px dashed white; box-shadow: 0px 0px; pointer-events: none;">
+                    </div>
+                </div>
+            </div>
+            <table class="gamesCatalogueTable">
+                <tr>
+                    <th> 
+                        <p> Genres: </p> 
+                        <div class="gamesCatalogueTableInput" id="genre1"> <input type="checkbox"> 3D </div>
+                        <div class="gamesCatalogueTableInput" id="genre2"> <input type="checkbox"> Action </div>
+                        <div class="gamesCatalogueTableInput" id="genre3"> <input type="checkbox"> Puzzle </div>
+                        <div class="gamesCatalogueTableInput" id="genre4"> <input type="checkbox"> Rougelite </div>
+                        <div class="gamesCatalogueTableInput" id="genre5"> <input type="checkbox"> RPG </div>
+                        <div class="gamesCatalogueTableInput" id="genre6"> <input type="checkbox"> Strategy </div>
+                        <div class="gamesCatalogueTableInput" id="genre7"> <input type="checkbox"> Spelling </div>
+                    </th>
+                    <th> 
+                        <p> Players: </p> 
+                        <div class="gamesCatalogueTableInput" id="players1"> <input type="checkbox"> Singleplayer </div>
+                        <div class="gamesCatalogueTableInput" id="players2"> <input type="checkbox"> Multiplayer </div>
+                    </th>
+                    <th> 
+                        <p> Platforms: </p> 
+                        <div class="gamesCatalogueTableInput" id="platform1"> <input type="checkbox"> Android </div>
+                        <div class="gamesCatalogueTableInput" id="platform2"> <input type="checkbox"> ios </div>
+                        <div class="gamesCatalogueTableInput" id="platform3"> <input type="checkbox"> itch.io </div>
+                        <div class="gamesCatalogueTableInput" id="platform4"> <input type="checkbox"> Steam </div>
+                    </th>
+                </tr>
+            </table>
+
+            <div class="gameDiv" id="gameDiv">
+                <div class="gameDivScrollPoint" id="gameDivScrollPoint"></div>
+                <div class="gameDivTitle" id="gameDivTitle"> </div>
+                <div class="gameDivHalf" id="gameDivLeft" style="width: 35%;"> </div>
+                <div class="gameDivHalf" id="gameDivRight" style="width: 35%;"> </div>
+                <div class="bannerDivLeft" style="width: 7.5%;"></div>
+                <div class="bannerDivRight" style="width: 7.5%; background: linear-gradient(to right, transparent 0%, #99ccff 60%);"></div> 
+            </div>
+
+            <div class="aboutDiv">
+                <h1 style="padding-top: 25px;"> WHAT IS ULTRA HAMMER GAMES? </h1>
+                <p> 
+                    Founded in Ontario, Canada, we are an independent studio that specializes in small-scale, replayable PC games.
+                    With an emphasis on passion and creativity, we aim to shine a long overdue spotlight on talented independent Canadian developers.
+                    Along with our projects, we strive to foster an inclusive community of equally expressive and vibrant members!
+                </p>
+                <p> 
+                    Interested in getting more familiar with our community?
+                    Be sure to follow our various social media platforms for news and content, and join our 
+                    <a href = "https://discord.gg/yUeUxNrTTu" target="_blank">Discord server</a> to interact with fellow members!
+                    <br><br> We hope you enjoy what you play!
+                </p>
+            </div>
+
+            <div class="footer">
+                <div class="footerTop"></div> 
+                <img src="images/text/footer_text.png">
+                <table class="footerTable">
+                    <tr>
+                        <th> <a href = "https://store.steampowered.com/search/?developer=Ultra%20Hammer%20Games" target="_blank" title="Steam"> <img src="images/social_icons/logo_steam.png"> </a> </th>
+                        <th> <a href = "https://ultrahammergames.itch.io/" target="_blank" title="itch.io"> <img src="images/social_icons/logo_itchio.png"> </a> </th>
+                        <th> <a href = "https://www.linkedin.com/company/ultrahammergames" target="_blank" title="LinkedIn"> <img src="images/social_icons/logo_linkedin.png"> </a> </th>
+                        <th> <a href = "https://discord.gg/yUeUxNrTTu" target="_blank" title="Discord server"> <img src="images/social_icons/logo_discord.png"> </a> </th>
+                        <th> <a href = "https://www.youtube.com/@UltraHammerGames" target="_blank" title="YouTube"> <img src="images/social_icons/logo_youtube.png"> </a> </th>
+                        <th> <a href = "https://www.instagram.com/ultrahammergames/" target="_blank" title="Instagram"> <img src="images/social_icons/logo_instagram.png"> </a> </th>
+                        <th> <a href = "https://x.com/UltraHammerGame" target="_blank" title="Twitter/X"> <img src="images/social_icons/logo_twitter.png"> </a> </th>
+                        <th> <a href = "https://www.reddit.com/r/UltraHammerGames/" target="_blank" title="Reddit"> <img src="images/social_icons/logo_reddit.png"> </a> </th>
+                    </tr>
+                </table>
+            </div>
         </div>
+    </div>  
+    
+    <div class="emailDiv">
+        <h1 style="margin-bottom: 5vh;"> WRITE AN EMAIL </h1>
+        <div class="emailDivSection">
+            <h2> TOPIC: </h2>
+            <select id="emailTopic">
+                <option value=""> </option>
+                <option value="Inquiry">Inquiry</option>
+                <option value="Technical Error">Technical Error</option>
+                <option value="Feedback">Feedback</option>
+                <option value="Proposal">Proposal</option>
+                <option value="Request for media">Request for media</option>
+                <option value="Content Submission">Content submission</option>
+            </select>
+        </div>
+        <div class="emailDivSection">
+            <h2> GAME: </h2>
+            <select id="emailGame">
+                <option value=""> </option>
+                <option value=" - Xeno Duel">Xeno Duel</option>
+                <option value=" - Soleil Survivor">Soleil Survivor</option>
+                <option value=" - Descendant">Descendant</option>
+                <option value=" - Scrabbleman">Scrabbleman</option>
+            </select>
+        </div>
+        <textarea id="emailBody" placeholder="Body" type="text"></textarea>
+        <textarea id="emailSender" placeholder="Your name (optional)" type="text" style="width: 30%; max-width: 200px; min-height: 25px; margin-top: 20px;"></textarea>
+        <div>
+            <button id="emailDivSend" style="margin-right: 10px;"> <h3> FINISH </h3> </button>
+            <button id="emailDivExit"> <h3> CLOSE </h3> </button>     
+        </div> 
+        <p style="margin-top: 40px;  text-align: center;"> In case of error, send emails directly to <i style="">ultrahammergames@gmail.com</i> </p>  
     </div>
+    
+    <script src="index.js"></script>
 </body>
 </html>

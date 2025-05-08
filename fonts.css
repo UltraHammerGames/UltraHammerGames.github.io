@@ -1,0 +1,39 @@
+@font-face {
+    font-family: MessingLettern;
+    src: url(fonts/messing-lettern/MessingLettern.ttf);
+}
+
+@font-face {
+    font-family: SansPlateCaps;
+    src: url(fonts/sans-plate-caps/SansPlateCaps.ttf);
+}
+
+@font-face {
+    font-family: ComicHelvetic;
+    src: url(fonts/comic-helvetic/ComicHelvetic_Medium.otf);
+}
+
+@font-face {
+    font-family: AcariSans;
+    src: url(fonts/acari-sans/AcariSans-Black.ttf);
+}
+
+@font-face {
+    font-family: CheyenneSans;
+    src: url(fonts/cheyenne-sans/CheyenneSans-Black.ttf);
+}
+
+@font-face {
+    font-family: Mordred;
+    src: url(fonts/mordred/Mordred.ttf);
+}
+
+@font-face {
+    font-family: Cryptik;
+    src: url(fonts/cryptik/Cryptik.ttf);
+}
+
+@font-face {
+    font-family: VenusRising;
+    src: url(fonts/venus-rising/Venus\ Rising\ Rg.otf);
+}
