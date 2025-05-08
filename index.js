@@ -28,9 +28,6 @@ function bannerButton(index = 0) {
             window.open("https://youtube.com/playlist?list=PLxXFNUhHS1NbBZUXNdyckqSDoHJ8Z4DIX&si=39qwd19hNOn6q2qR");
             break;
     }
-    if (index == 1) {  }
-    else if (index == 2) { window.open("https://danielmadan2001.github.io/"); }
-    else if (index == 3) { window.open("https://danielmadan2001.github.io/"); }
 }
 
 function bannerUpdate(direction = 0) {
