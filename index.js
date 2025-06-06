@@ -229,30 +229,30 @@ function gameDivUpdate(gameName) {
         
         gameDivLeft.append(getTags(gameName));        
         gameDivLeft.append(getDate(gameName));        
-        gameDivLeft.append(getDescription(gameName));  
-
-        gameDivRight.append(getTeamMembers(gameName));        
+        gameDivLeft.append(getDescription(gameName));
+        gameDivLeft.append(getTeamMembers(gameName));
+                
         gameDivRight.append(getScreenshots(gameName));        
         gameDivRight.append(getPlatformIcons(gameName));
 
         let h3Font = '';
-        let h3Size = 0.8;
+        let h3Size = 1.15;
         
         switch (gameName) {
             case ("xeno_duel"): 
                 gameDiv.style.backgroundImage = `url("images/game_bgs/xeno_duel_bg.png")`;  
                 h3Font = 'VenusRising';
-                h3Size = 0.8;
+                h3Size = 1.15;
                 break;
             case ("soleil_survivor"): 
                 gameDiv.style.backgroundImage = `url("images/game_bgs/soleil_survivor_bg.png")`; 
                 h3Font = 'Cryptik';
-                h3Size = 1.15;
+                h3Size = 1.5;
                 break;
             case ("descendant"): 
                 gameDiv.style.backgroundImage = `url("images/game_bgs/descendant_bg.png")`; 
                 h3Font = 'Mordred';
-                h3Size = 1.15;
+                h3Size = 1.25;
                 break;
             case ("scrabbleman"): 
                 gameDiv.style.backgroundImage = `url("images/game_bgs/scrabbleman_bg.png")`; 
@@ -275,22 +275,23 @@ function getTitle(gameName) {
         case ("xeno_duel"):
             title.innerHTML = `<h2>XENO DUEL</h2>`;
             title.style.fontFamily = `VenusRising`;
-            title.style.fontSize = `2vw`;
+            // title.style.fontSize = `5vw`;
+            // title.style.color = `#ff0000`;
             break;
         case ("soleil_survivor"):
             title.innerHTML = `<h2>SOLEIL SURVIVOR</h2>`;
             title.style.fontFamily = `Cryptik`;
-            title.style.fontSize = `2.5vw`;
+            title.style.fontSize = `2.5vh`;
             break;
         case ("descendant"):
             title.innerHTML = `<h2>DESCENDANT</h2>`;
             title.style.fontFamily = `Mordred`;
-            title.style.fontSize = `2.5vw`;
+            title.style.fontSize = `2.5vh`;
             break;
         case ("scrabbleman"):
             title.innerHTML = `<h2>SCRABBLEMAN</h2>`;
             title.style.fontFamily = `Arial`;
-            title.style.fontSize = `2.5vw`;
+            title.style.fontSize = `2.5vh`;
             break;
     }
     return title;
@@ -335,7 +336,7 @@ function getDate(gameName) {
     row.innerHTML = `<h3>PUBLISHED:</h3>`;
     switch (gameName) {
         case ("xeno_duel"):
-            row.innerHTML = `<h3>COMING SOON!</h3>`;
+            row.innerHTML += `<h4>June 2025</h4>`;
             // date.style.fontFamily = `VenusRising`;
             // date.style.fontSize = `1.5vw`;
             break;
@@ -460,7 +461,11 @@ function getPlatformIcons(gameName) {
 
     switch (gameName) {
         case ("xeno_duel"):
-            platforms.innerHTML = ``;
+            platforms.innerHTML += `
+                <a href = "https://play.google.com/store/apps/details?id=com.maxgamestudio.xenoduel" target="_blank" title="Play on Android"> <img class="gameDivPlatform" src="images/social_icons/logo_android.png"> </a>
+                <a href = "https://apps.apple.com/us/app/xeno-duel/id6746754543" target="_blank" title="Play on Apple"> <img class="gameDivPlatform" src="images/social_icons/logo_apple.png"> </a>
+                <a href = "https://ultrahammergames.itch.io/xeno-duel" target="_blank" title="itch.io"> <img class="gameDivPlatform" src="images/social_icons/logo_itchio.png"> </a>
+            `
             break;
         case ("soleil_survivor"):
             platforms.innerHTML += `

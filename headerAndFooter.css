@@ -19,6 +19,25 @@
 	min-height: 15%;
 }
 
+.headerText {
+	display: flex;
+  	align-items: flex-end;
+  	justify-content: flex-start;
+  	height: 100px;
+  	min-height: 15%;
+  	padding-left: 10px;
+	margin-right: 5em;
+}
+
+.headerText h3 {
+	margin-left: 0px;
+	color: black;
+	margin-bottom: 0px;
+	font-size: clamp(0.5rem, 1.25vw + 1rem, 3rem);
+	font-family: MessingLettern;
+	font-weight: normal;
+}
+
 .headerEmail {
 	width: 5%;
 	min-width: 35px;

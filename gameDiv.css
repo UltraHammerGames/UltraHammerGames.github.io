@@ -8,7 +8,7 @@
 	margin-top: 25px;
     margin-bottom: 0px;
     padding-top: 15px;
-    padding-bottom: 15px;
+	padding-bottom: 15px;
 }
 
 .gameDiv::after {
@@ -19,16 +19,16 @@
 
 .gameDiv p {
 	margin-left: 2%;
+	font-size: 0.9em;
 }
 
 .gameDiv h2 {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	margin-left: 2.5%;
-	margin-left: 2.5%;
 	width: 100%;
-	font-size: clamp(1rem, 5vw, 4rem);
-	margin-left: 2%;
+	font-size: clamp(1.5rem, 6vw + 1rem, 4rem);
+	padding-bottom: 1vh;
 }
 
 .gameDivScrollPoint {
@@ -46,19 +46,20 @@
 	margin: auto; 
 	float: left; 
 	min-width: 315px;
-    font-size: 1.5vw;
+    /* font-size: 1.5vw; */
 	margin-left: 5vw;
+	padding-left: 0.75%;
 }
 
 .gameDivHalf p {
-    color: #bbb;
-	font-size: 0.8em;
-	padding-top: 1.5vw;
-	margin-left: 0.5vw;
+    color: #ccc;
+	/* font-size: 1vw; */
+	padding-top: 1.5vh;
+	padding-bottom: 1.5vh;
+	margin-left: 0.65vh;
 }
 
 .gameDivHalf h3 {
-	font-size: 0.8em;
     margin-top: 1.5%;
     margin-bottom: 0px;
 	margin-left: 0px;
@@ -66,21 +67,22 @@
 
 .gameDivHalf h4 {
 	font-family: 'ComicHelvetic';
-    margin-left: 0.75vw;
-    margin-top: 0.75vw;
+    margin-left: 0.75vh;
+    margin-top: 1.15vh;
     margin-bottom: 0px;
-    font-size: 0.75em;
+    /* font-size: 0.8em; */
+    font-size: 1em;
 }
 
 .gameDivHalf ul {
 	margin-top: 0.5vw;
-	padding-left: 2vw;
 	list-style-type: "👽";
+	padding-right: 1vw;
 }
 
 .gameDivHalf li {
 	font-family: "ComicHelvetic";
-	font-size: 0.7em;
+	font-size: 0.9em;
 	text-decoration: none;
 }
 
@@ -95,6 +97,10 @@
     display: flex;
     align-items: center;
 }
+
+/* .gameDivHalfRow p {
+	background-color: green;
+} */
 
 .gameDivScreenshotSection {
 	width: 100%;
@@ -151,7 +157,7 @@
 }
 
 .gameDivPlatform {
-	width: 8%;
+	width: 12%;
 	min-width: 3.5vw;
 	padding-left: 0.25vw;
 	padding-right: 0.5vw;

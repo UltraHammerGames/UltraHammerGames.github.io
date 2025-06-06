@@ -184,12 +184,12 @@ h3 {
     width: 100%;
     overflow: hidden;
 	margin-bottom: 10px;
-	padding-bottom: 25px;
 }
 
 .gamesCatalogueViewport {
     width: 85%;
     overflow-x: hidden;
+	padding-bottom: 25px;
 }
 
 .gamesCatalogueWrapper {
@@ -200,7 +200,7 @@ h3 {
 .gamesCatalogueItem {
     width: 30%;
     margin: 0 0.5%;
-    box-shadow: 6px 6px;
+    box-shadow: 5px 5px;
     cursor: pointer;
     border: 2px solid white;
     transition: width 0.5s ease, opacity 0.5s ease;
@@ -209,7 +209,7 @@ h3 {
 
 .gamesCatalogueItem:hover {
 	border: 3px solid yellow;
-    box-shadow: 7.5px 7.5px;
+    box-shadow: 6.5px 6.5px;
 }
 
 .gamesCatalogueItem.shrink {
