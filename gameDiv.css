@@ -27,7 +27,7 @@
 	margin-bottom: 0px;
 	margin-left: 2.5%;
 	width: 100%;
-	font-size: clamp(1.5rem, 6vw + 1rem, 4rem);
+	font-size: clamp(1.5rem, 4.5vw + 1rem, 4rem);
 	padding-bottom: 1vh;
 }
 

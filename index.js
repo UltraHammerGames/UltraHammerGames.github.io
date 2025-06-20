@@ -19,13 +19,13 @@ bannerUpdate(1);
 function bannerButton(index = 0) {
     switch (index) {
         case 1:
-            
+            gameCatalogueButton('xeno_duel');
             break;
         case 2:
-            
+            window.open("https://youtube.com/playlist?list=PLxXFNUhHS1NbBZUXNdyckqSDoHJ8Z4DIX&si=39qwd19hNOn6q2qR");
             break;
         case 3:
-            window.open("https://youtube.com/playlist?list=PLxXFNUhHS1NbBZUXNdyckqSDoHJ8Z4DIX&si=39qwd19hNOn6q2qR");
+            window.open("https://discord.gg/yUeUxNrTTu");
             break;
     }
 }
@@ -275,23 +275,21 @@ function getTitle(gameName) {
         case ("xeno_duel"):
             title.innerHTML = `<h2>XENO DUEL</h2>`;
             title.style.fontFamily = `VenusRising`;
-            // title.style.fontSize = `5vw`;
-            // title.style.color = `#ff0000`;
             break;
         case ("soleil_survivor"):
             title.innerHTML = `<h2>SOLEIL SURVIVOR</h2>`;
             title.style.fontFamily = `Cryptik`;
-            title.style.fontSize = `2.5vh`;
+            // title.style.fontSize = `2.5vh`;
             break;
         case ("descendant"):
             title.innerHTML = `<h2>DESCENDANT</h2>`;
             title.style.fontFamily = `Mordred`;
-            title.style.fontSize = `2.5vh`;
+            // title.style.fontSize = `2.5vh`;
             break;
         case ("scrabbleman"):
             title.innerHTML = `<h2>SCRABBLEMAN</h2>`;
             title.style.fontFamily = `Arial`;
-            title.style.fontSize = `2.5vh`;
+            // title.style.fontSize = `2.5vh`;
             break;
     }
     return title;
