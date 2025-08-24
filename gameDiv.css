@@ -101,12 +101,37 @@
 /* .gameDivHalfRow p {
 	background-color: green;
 } */
+ 
+.gameDivArtSection {
+	width: 100%;
+	text-align: center;
+	padding: 10px 0px 0px 0px;
+	/* font-size: 0; */
+}
+
+.gameDivArtSection img {
+	width: 90%;
+	min-width: 13.25vw;
+	margin: auto;
+	display: block;
+	border: 3px solid white;
+	padding-top: 10px;
+}
+
+.gameDivArtSection img:hover {
+	border: 3px solid yellow;
+}
+
+.gameDivArtSection h3 {
+	padding: 5px 0px 0px 0px;
+	margin-bottom: 1.5em;
+}
 
 .gameDivScreenshotSection {
 	width: 100%;
 	text-align: center;
-	padding: 10px 0px 0px 0px;
-	font-size: 0;
+	padding: 10px 0px 0.75em 0px;
+	/* font-size: 0; */
 }
 
 .gameDivScreenshotParent {
@@ -130,6 +155,7 @@
 .gameDivHalfScreenshot:hover {
 	transform: scale(1.05);
     box-shadow: 0px 0px #000;
+	border: 3px solid yellow;
 }
 
 .gameDivHalfScreenshotBig {
@@ -149,6 +175,7 @@
 .gameDivPlatformParent {
 	width: 100%;
     margin-left: 0.75vw;
+	margin-bottom: 0.25em;
 }
 
 .gameDivPlatformParent a {

@@ -82,6 +82,8 @@ const gameDiv = document.getElementById('gameDiv');
 const gameDivTitle = document.getElementById('gameDivTitle');
 const gameDivLeft = document.getElementById('gameDivLeft');
 const gameDivRight = document.getElementById('gameDivRight');
+
+let gameDivArtCaption = null;
 let gameDivScreenshotBig = null;
 
 if (window.innerWidth > 1250) {
@@ -232,11 +234,12 @@ function gameDivUpdate(gameName) {
         gameDivLeft.append(getDescription(gameName));
         gameDivLeft.append(getTeamMembers(gameName));
                 
+        gameDivRight.append(getGameArt(gameName));        
         gameDivRight.append(getScreenshots(gameName));        
         gameDivRight.append(getPlatformIcons(gameName));
 
-        let h3Font = '';
         let h3Size = 1.15;
+        let h3Font = '';
         
         switch (gameName) {
             case ("xeno_duel"): 
@@ -266,6 +269,8 @@ function gameDivUpdate(gameName) {
             h3.style.fontFamily = h3Font;
             h3.style.fontSize = h3Size + `em`;
         });
+
+        gameDivArtCaption.style.fontSize = (h3Size - 0.5) + `em`;
     }
 }
 
@@ -312,7 +317,7 @@ function getTags(gameName) {
             // tags.style.fontFamily = `Cryptik`;
             break;
         case ("descendant"):
-            row.innerHTML += `<h4>RPG, Rougelite</h4>`;
+            row.innerHTML += `<h4>RPG, Roguelite</h4>`;
             // tags.style.fontFamily = `Mordred`;
             break;
         case ("scrabbleman"):
@@ -409,6 +414,30 @@ function getTeamMembers(gameName) {
             break;
     }
     return teamMembers;
+}
+
+function getGameArt(gameName) {
+    const section = document.createElement('article');
+    section.className = "gameDivArtSection";
+
+    console.log("bruh");
+
+    switch (gameName) {
+        case ("xeno_duel"): 
+            const newGameDivArt = document.createElement('article');
+            // newGameDivArt.className = "gameDivHalfScreenshotBig";
+            newGameDivArt.innerHTML = `<a href = "images/game_art/${gameName}_art.png"> <img src="images/game_art/${gameName}_art.png"> </a>`;            
+            section.append(newGameDivArt);
+
+            const newGameDivArtCaption = document.createElement('article');
+            newGameDivArtCaption.innerHTML = `<h3 style="font-size: 3px, padding-top: 0px;">Game art made by Bear Mug</h3>`
+            gameDivArtCaption = newGameDivArtCaption;
+            section.append(gameDivArtCaption);
+
+            break;
+    }
+
+    return section;
 }
 
 function getScreenshots(gameName) {    

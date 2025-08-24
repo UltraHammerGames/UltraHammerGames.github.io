@@ -37,3 +37,8 @@
     font-family: VenusRising;
     src: url(fonts/venus-rising/Venus\ Rising\ Rg.otf);
 }
+
+@font-face {
+    font-family: brk;
+    src: url(fonts/brk/jekyll.ttf);
+}
