@@ -19,7 +19,7 @@ bannerUpdate(1);
 function bannerButton(index = 0) {
     switch (index) {
         case 1:
-            gameCatalogueButton('xeno_duel');
+            gameCatalogueButton('all_blight_long');
             break;
         case 2:
             window.open("https://youtube.com/playlist?list=PLxXFNUhHS1NbBZUXNdyckqSDoHJ8Z4DIX&si=39qwd19hNOn6q2qR");
@@ -226,6 +226,11 @@ function gameDivUpdate(gameName) {
         gameDivTitle.innerHTML = ``;
         gameDivLeft.innerHTML = ``;
         gameDivRight.innerHTML = ``;
+        
+        let canPlay = true;
+        if (gameName == 'all_blight_long') {
+            canPlay = false;
+        }
 
         gameDivTitle.append(getTitle(gameName));
         
@@ -233,19 +238,25 @@ function gameDivUpdate(gameName) {
         gameDivLeft.append(getDate(gameName));        
         gameDivLeft.append(getDescription(gameName));
         gameDivLeft.append(getTeamMembers(gameName));
-                
-        gameDivRight.append(getGameArt(gameName));        
+        
+        const gameArtSection = getGameArt(gameName);
+        if (gameArtSection) {
+            gameDivRight.append(getGameArt(gameName));    
+        }  
         gameDivRight.append(getScreenshots(gameName));        
-        gameDivRight.append(getPlatformIcons(gameName));
+        gameDivRight.append(getPlatformIcons(gameName, canPlay));
 
         let h3Size = 1.15;
-        let h3Font = '';
+        let h3Font = '';  
         
         switch (gameName) {
+            case ("all_blight_long"):
+                gameDiv.style.backgroundImage = `url("images/game_bgs/all_blight_long_bg.png")`;  
+                h3Font = 'brk';
+                break;
             case ("xeno_duel"): 
                 gameDiv.style.backgroundImage = `url("images/game_bgs/xeno_duel_bg.png")`;  
                 h3Font = 'VenusRising';
-                h3Size = 1.15;
                 break;
             case ("soleil_survivor"): 
                 gameDiv.style.backgroundImage = `url("images/game_bgs/soleil_survivor_bg.png")`; 
@@ -260,7 +271,6 @@ function gameDivUpdate(gameName) {
             case ("scrabbleman"): 
                 gameDiv.style.backgroundImage = `url("images/game_bgs/scrabbleman_bg.png")`; 
                 h3Font = 'Arial';
-                h3Size = 1.15;
                 break;
         }
 
@@ -277,6 +287,11 @@ function gameDivUpdate(gameName) {
 function getTitle(gameName) {    
     const title = document.createElement('article');
     switch (gameName) {
+        case ("all_blight_long"):
+            title.innerHTML = `<h2>ALL BLIGHT LONG</h2>`;
+            title.style.fontFamily = `brk`;
+            title.querySelector("h2").style.fontSize = `clamp(32px, 5vw, 64px)`;
+            break;
         case ("xeno_duel"):
             title.innerHTML = `<h2>XENO DUEL</h2>`;
             title.style.fontFamily = `VenusRising`;
@@ -308,6 +323,10 @@ function getTags(gameName) {
     row.innerHTML = `<h3>GENRE:</h3>`;
 
     switch (gameName) {
+        case ("all_blight_long"):
+            row.innerHTML += `<h4>2D, Action, Platforming</h4>`;
+            // tags.style.fontFamily = `VenusRising`;
+            break;
         case ("xeno_duel"):
             row.innerHTML += `<h4>Strategy</h4>`;
             // tags.style.fontFamily = `VenusRising`;
@@ -338,6 +357,11 @@ function getDate(gameName) {
 
     row.innerHTML = `<h3>PUBLISHED:</h3>`;
     switch (gameName) {
+        case ("all_blight_long"):
+            row.innerHTML = `<h4>COMING SOON</h4>`;
+            // date.style.fontFamily = `VenusRising`;
+            // date.style.fontSize = `1.5vw`;
+            break;
         case ("xeno_duel"):
             row.innerHTML += `<h4>June 2025</h4>`;
             // date.style.fontFamily = `VenusRising`;
@@ -367,6 +391,20 @@ function getDate(gameName) {
 function getDescription(gameName) {    
     const date = document.createElement('article');
     switch (gameName) {
+        case ("all_blight_long"):
+            date.innerHTML = `<p>
+                New Blancastel, 1989.<br>
+                On one fateful autumn night, the bustling city is engulfed by an ancient living plague that infects its populace and decays the structures that uphold it. 
+                Amongst the destruction and panic, a lone teenager, the descendant of the saint who purged the plague centuries ago, stands untainted. 
+                Realizing his destiny is calling, Mikhail St. Martin conjures his dormant illuminating powers and ventures towards the source of the blight to eradicate it once and for all.<br><br>
+
+                Up to eight players run, jump, and zap their way through levels filled with hazardous terrain and horrific enemies.
+                However, there is another force they must beware of: the other players!
+                While waiting for their turn, they can unleash surprise attacks and curses to sabotage the user's run.
+                Precise control over Mikhail, knowledge of his toolset, and ability to overcome incoming curses are paramount to success.
+                To be crowned the victor, each participant must progress further than their rivals with a limited number of retries.
+                </p>`;
+            break;
         case ("xeno_duel"):
             date.innerHTML = `<p>
                 At some point someone must have asked: “What if chess had aliens with rocket launchers?”<br><br>
@@ -420,22 +458,24 @@ function getGameArt(gameName) {
     const section = document.createElement('article');
     section.className = "gameDivArtSection";
 
-    console.log("bruh");
+    if (gameName == "scrabbleman" || gameName == "descendant" || gameName == "soleil_survivor") {
+        return;
+    }
 
+    const newGameDivArt = document.createElement('article');
+    newGameDivArt.innerHTML = `<a href = "images/game_art/${gameName}_art.png"> <img src="images/game_art/${gameName}_art.png"> </a>`;            
+    section.append(newGameDivArt);
+
+    const newGameDivArtCaption = document.createElement('article');
     switch (gameName) {
-        case ("xeno_duel"): 
-            const newGameDivArt = document.createElement('article');
-            // newGameDivArt.className = "gameDivHalfScreenshotBig";
-            newGameDivArt.innerHTML = `<a href = "images/game_art/${gameName}_art.png"> <img src="images/game_art/${gameName}_art.png"> </a>`;            
-            section.append(newGameDivArt);
-
-            const newGameDivArtCaption = document.createElement('article');
+        case("xeno_duel"):
             newGameDivArtCaption.innerHTML = `<h3 style="font-size: 3px, padding-top: 0px;">Game art made by Bear Mug</h3>`
-            gameDivArtCaption = newGameDivArtCaption;
-            section.append(gameDivArtCaption);
-
             break;
     }
+
+    
+    gameDivArtCaption = newGameDivArtCaption;
+    section.append(gameDivArtCaption);
 
     return section;
 }
@@ -447,6 +487,7 @@ function getScreenshots(gameName) {
     let j = 4;
 
     switch (gameName) {
+        case ("all_blight_long"): j = 1; break;
         case ("soleil_survivor"): j = 2; break;
         case ("scrabbleman"): j = 3; break;
     }
@@ -480,11 +521,12 @@ function updateScreenshotBig(gameName = "", index = 0) {
     gameDivScreenshotBig.innerHTML = `<img src="images/game_screenshots/${gameName}${index + 1}.png">`;
 }
 
-function getPlatformIcons(gameName) {    
+function getPlatformIcons(gameName, canPlay) {    
     const platforms = document.createElement('article');
     platforms.className = "gameDivPlatformParent";
     
-    platforms.innerHTML = `<h3 style="margin-bottom: 1vw;">PLAY IT NOW!</h3>`;
+    platforms.innerHTML = ``;
+    if (canPlay) { platforms.innerHTML += `<h3 style="margin-bottom: 1vw;">PLAY IT NOW!</h3>`; }
 
     switch (gameName) {
         case ("xeno_duel"):

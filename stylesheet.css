@@ -243,6 +243,7 @@ h3 {
 	width: 80%;
 	max-width: 400px;
 	margin: auto;
+	accent-color: #3366ff;
 }
 
 .gamesCatalogueTable th {
@@ -255,6 +256,10 @@ h3 {
 	font-size: 1.35em;
 	margin: 0px;
 	padding-top: 0px;
+}
+
+.gamesCatalogueTableInput input[type="checkbox"] {
+    cursor: pointer;
 }
 
 .aboutDiv {
