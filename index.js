@@ -468,8 +468,17 @@ function getGameArt(gameName) {
 
     const newGameDivArtCaption = document.createElement('article');
     switch (gameName) {
+        case("all_blight_long"):
+            newGameDivArtCaption.innerHTML = `<h3 style="font-size: 30vh">
+                KEY ART BY <a href = "https://www.twitch.tv/candi_cat_cari" target="_blank">CANDI_CAT_CARI</a> <br>
+                BACKGROUND ART BY <a href = "https://www.fiverr.com/thodorislaourde" target="_blank">LAOURDE</a>
+            </h3>`
+            break;
         case("xeno_duel"):
-            newGameDivArtCaption.innerHTML = `<h3 style="font-size: 3px, padding-top: 0px;">Game art made by Bear Mug</h3>`
+            newGameDivArtCaption.style.fontSize = '3px';
+            newGameDivArtCaption.innerHTML = `<h3>
+                Game art made by Bear Mug
+            </h3>`
             break;
     }
 

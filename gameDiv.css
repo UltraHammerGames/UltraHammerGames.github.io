@@ -97,16 +97,11 @@
     display: flex;
     align-items: center;
 }
-
-/* .gameDivHalfRow p {
-	background-color: green;
-} */
  
 .gameDivArtSection {
 	width: 100%;
 	text-align: center;
 	padding: 10px 0px 0px 0px;
-	/* font-size: 0; */
 }
 
 .gameDivArtSection img {
@@ -124,13 +119,20 @@
 .gameDivArtSection h3 {
 	padding: 5px 0px 0px 0px;
 	margin-bottom: 1.5em;
+	font-size: 0.9em;
+	line-height: 2.25vh;
+}
+
+.gameDivArtSection a {
+	text-decoration: none;
+	color: #99ccff;
+	line-height: 1vw;
 }
 
 .gameDivScreenshotSection {
 	width: 100%;
 	text-align: center;
 	padding: 10px 0px 0.75em 0px;
-	/* font-size: 0; */
 }
 
 .gameDivScreenshotParent {

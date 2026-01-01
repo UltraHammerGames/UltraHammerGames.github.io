@@ -162,3 +162,10 @@
 .footerTable img:hover {
 	transform: scale(1.25);
 }
+
+.footerLegal p {
+	margin-top: 10px;
+	margin-left: 5%; 
+	margin-bottom: 0px;
+	font-size: 0.8em;
+}
