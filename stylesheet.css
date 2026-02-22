@@ -142,7 +142,7 @@ h3 {
 
 .bannerDivLeft {	
 	width: 15%;
-	height: 105%;
+	height: 101%;
 	background: linear-gradient(to left, transparent 0%, #99ccff 80%);
 	position: absolute;
 	left: -2px;
@@ -151,7 +151,7 @@ h3 {
 
 .bannerDivRight {	
 	width: 15%;
-	height: 105%;
+	height: 101%;
 	background: linear-gradient(to right, transparent 0%, #99ccff 80%);
 	position: absolute;
 	right: -2px;
@@ -189,7 +189,7 @@ h3 {
 .gamesCatalogueViewport {
     width: 85%;
     overflow-x: hidden;
-	padding-bottom: 25px;
+	padding-bottom: 5px;
 }
 
 .gamesCatalogueWrapper {
@@ -241,26 +241,61 @@ h3 {
 	margin-left: 7.5%;
 	font-family: ComicHelvetic;
 	width: 80%;
-	max-width: 400px;
 	margin: auto;
-	accent-color: #3366ff;
-}
-
-.gamesCatalogueTable th {
-	text-align: left;
-	vertical-align: top;
-	font-size: 0.9em;
 }
 
 .gamesCatalogueTable p {
-	font-size: 1.35em;
+	font-size: 1em;
 	margin: 0px;
-	padding-top: 0px;
+	padding-top: 10px;
 }
 
-.gamesCatalogueTableInput input[type="checkbox"] {
-    cursor: pointer;
+.gamesCatalogueTableHeader {
+	font-size: 1.15em;
+	color: #000;
 }
+
+.gamesCatalogueTableRow {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gamesCatalogueTableInput {
+    display: inline-flex; 
+    align-items: center;
+    padding: 4px 6px 4px 4px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font: inherit;
+	font-size: 0.85em;
+    transition: 0.15s ease;
+	margin-right: 7.5px;
+	margin-bottom: 5px;
+}
+
+.gamesCatalogueTableInput img {
+    height: 16px;
+    padding-right: 0.5vh;
+}
+
+.gamesCatalogueTableInputOn {
+    background-color: #0033cc;
+    color: white;
+    filter: none;
+}
+.gamesCatalogueTableInputOn:hover { background-color: #002699; }
+
+.gamesCatalogueTableInputOff { background-color: #66b3ff; }
+.gamesCatalogueTableInputOff:hover { background-color: #3399ff; }
+
+.gamesCatalogueTableInputOff img {
+    filter: invert(100%);
+}
+
+.gamesCatalogueTableInputOffPlatform { background-color: #66b3ff; }
+.gamesCatalogueTableInputOffPlatform:hover { background-color: #3399ff; }
 
 .aboutDiv {
 	margin-bottom: 40px;

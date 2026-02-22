@@ -171,38 +171,89 @@ function gameCatalogueUpdate(direction = 0) {
     }
 }
 
-function gameRestrictionsSetup() {
+function gameRestrictionsSetup() { 
+    createGamesCatalogueTable();
+    
     const inputs = document.getElementsByClassName("gamesCatalogueTableInput");
     for (let i = 0; i < inputs.length; i++) {
-        const textContent = inputs[i].textContent.slice(2,-1);
-        switch (inputs[i].id.slice(0,-1)) {
-            case ("genre"): gameDivRestrictionsGenres[textContent] = false; break;
-            case ("players"): gameDivRestrictionsPlayers[textContent] = false; break;
-            case ("platform"): gameDivRestrictionsPlatforms[textContent] = false; break;
+        const textContent = inputs[i].textContent.trim();
+
+        switch (inputs[i].id.slice(0, -1)) {
+            case "genre": gameDivRestrictionsGenres[textContent] = false; break;
+            case "players": gameDivRestrictionsPlayers[textContent] = false; break;
+            case "platform": gameDivRestrictionsPlatforms[textContent] = false; break;
         }
-         
-        inputs[i].addEventListener('change', function() { gameRestrictionsUpdate(this, event); }, false);
+
+        inputs[i].addEventListener("click", function () { gameRestrictionsUpdate(this); });
     }
 }
 
-function gameRestrictionsUpdate() {    
-    switch (arguments[0].id.slice(0,-1)) {
-        case ("genre"): 
-            gameDivRestrictionsGenres[arguments[0].textContent.trim()] = !gameDivRestrictionsGenres[arguments[0].textContent.trim()]; 
-            if (gameDivRestrictionsGenres[arguments[0].textContent.trim()]) { gameDivRestrictionsGenresCount += 1; }
-            else { gameDivRestrictionsGenresCount -= 1; }
-            break;
-        case ("players"): 
-            gameDivRestrictionsPlayers[arguments[0].textContent.trim()] = !gameDivRestrictionsPlayers[arguments[0].textContent.trim()]; 
-            if (gameDivRestrictionsPlayers[arguments[0].textContent.trim()]) { gameDivRestrictionsPlayersCount += 1; }
-            else { gameDivRestrictionsPlayersCount -= 1; }
-            break;        
-        case ("platform"): 
-        gameDivRestrictionsPlatforms[arguments[0].textContent.trim()] = !gameDivRestrictionsPlatforms[arguments[0].textContent.trim()]; 
-            if (gameDivRestrictionsPlatforms[arguments[0].textContent.trim()]) { gameDivRestrictionsPlatformsCount += 1; }
-            else { gameDivRestrictionsPlatformsCount -= 1; }
-            break;
+function createGamesCatalogueTable() {
+    const genreNames = ['2D', '3D', 'Action', 'Platforming', 'Puzzle', 'Roguelite', 'RPG', 'Spelling', 'Strategy'];
+    const playersNames = ['Singleplayer', 'Multiplayer'];
+    const platformNames = ['Android', 'ios', 'itch.io', 'Steam'];
+    
+    const gamesCatalogueTable = document.getElementsByClassName('gamesCatalogueTable')[0];
+    const gamesCatalogueTableRow = document.createElement('article');
+    gamesCatalogueTableRow.classList.add('gamesCatalogueTableRow');
+    
+    gamesCatalogueTable.innerHTML = `<p class="gamesCatalogueTableHeader"> GENRES: </p>`;
+    gamesCatalogueTable.append(createGamesCatalogueRow(gamesCatalogueTableRow, 'genre', genreNames));
+    
+    gamesCatalogueTable.innerHTML += `<p class="gamesCatalogueTableHeader"> PLAYERS: </p>`;
+    gamesCatalogueTable.append(createGamesCatalogueRow(gamesCatalogueTableRow, 'players', playersNames));
+
+    gamesCatalogueTable.innerHTML += `<p class="gamesCatalogueTableHeader"> PLATFORMS: </p>`;
+    gamesCatalogueTable.append(createGamesCatalogueRow(gamesCatalogueTableRow, 'platform', platformNames));
+}
+
+function createGamesCatalogueRow(gamesCatalogueTableRow, categoryName, valueList) {
+    gamesCatalogueTableRow.innerHTML = ``;
+
+    for (let i = 0; i < valueList.length; i++) {
+        console.log(valueList[i]);
+        const gamesCatalogueTableInput = document.createElement('article');
+        let classList = "gamesCatalogueTableInput gamesCatalogueTableInputOff";
+        if (categoryName == 'platform') { classList = "gamesCatalogueTableInput gamesCatalogueTableInputOffPlatform"; }
+
+        gamesCatalogueTableInput.innerHTML = `
+            <button type="button"
+                    class="${classList}"
+                    id="${categoryName}${i + 1}">
+                <img src="images/game_catalogue_icons/${categoryName}_icon_${valueList[i].toLowerCase()}.png">
+                ${valueList[i]}
+            </button>
+        `; 
+        gamesCatalogueTableRow.append(gamesCatalogueTableInput);
     }
+    return gamesCatalogueTableRow;
+}
+
+function gameRestrictionsUpdate(element) {
+
+    const key = element.textContent.trim();
+    const type = element.id.slice(0, -1);
+
+    element.classList.toggle("gamesCatalogueTableInputOn");
+    if (type != "platform") {
+        element.classList.toggle("gamesCatalogueTableInputOff");
+    } else {
+        element.classList.toggle("gamesCatalogueTableInputOffPlatform");
+    }
+
+    let targetObject;
+    let targetCount;
+
+    switch (type) {
+        case "genre":       targetObject = gameDivRestrictionsGenres;       targetCount = "gameDivRestrictionsGenresCount";     break;
+        case "players":     targetObject = gameDivRestrictionsPlayers;      targetCount = "gameDivRestrictionsPlayersCount";    break;
+        case "platform":    targetObject = gameDivRestrictionsPlatforms;    targetCount = "gameDivRestrictionsPlatformsCount";  break;
+    }
+
+    targetObject[key] = !targetObject[key];
+
+    if (targetObject[key]) { window[targetCount]++; }
+    else { window[targetCount]--; }
     gameCatalogueUpdate();
 }
 
