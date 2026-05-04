@@ -220,7 +220,8 @@ function createGamesCatalogueRow(gamesCatalogueTableRow, categoryName, valueList
             <button type="button"
                     class="${classList}"
                     id="${categoryName}${i + 1}">
-                <img src="images/game_catalogue_icons/${categoryName}_icon_${valueList[i].toLowerCase()}.png">
+                <img src="images/game_catalogue_icons/${categoryName}_icon_${valueList[i]
+                    .toLowerCase().replaceAll(" ", "_").replaceAll("-", "_")}.png">
                 ${valueList[i]}
             </button>
         `; 
@@ -279,12 +280,13 @@ function gameDivUpdate(gameName) {
         gameDivRight.innerHTML = ``;
         
         let canPlay = true;
-        if (gameName == 'all_blight_long') {
-            canPlay = false;
-        }
+        // if (gameName == 'all_blight_long') {
+        //     canPlay = false;
+        // }
 
         gameDivTitle.append(getTitle(gameName));
         
+        gameDivLeft.append(getWebsite(gameName));        
         gameDivLeft.append(getTags(gameName));        
         gameDivLeft.append(getDate(gameName));        
         gameDivLeft.append(getDescription(gameName));
@@ -364,6 +366,26 @@ function getTitle(gameName) {
             break;
     }
     return title;
+}
+
+function getWebsite(gameName) {
+    const section = document.createElement('article');
+    
+    switch (gameName) {
+        case ("all_blight_long"):
+            section.innerHTML += `<h3> 
+                <a href = "https://ultrahammergames.github.io/AllBlightLong/" target="_blank" style="color: #ffff66;"> 
+                    Click here for more information! 
+                </a>
+            </h3>`;
+            break;
+    }
+
+    if (section.innerHTML != "") {
+        section.innerHTML += `<br>`;
+    }
+
+    return section;
 }
 
 function getTags(gameName) {    
@@ -547,7 +569,7 @@ function getScreenshots(gameName) {
     let j = 4;
 
     switch (gameName) {
-        case ("all_blight_long"): j = 1; break;
+        case ("all_blight_long"): j = 2; break;
         case ("soleil_survivor"): j = 2; break;
         case ("scrabbleman"): j = 3; break;
     }
@@ -589,6 +611,11 @@ function getPlatformIcons(gameName, canPlay) {
     if (canPlay) { platforms.innerHTML += `<h3 style="margin-bottom: 1vw;">PLAY IT NOW!</h3>`; }
 
     switch (gameName) {
+        case ("all_blight_long"):
+            platforms.innerHTML += `
+                <a href = "https://ultrahammergames.itch.io/all-blight-long" target="_blank" title="itch.io"> <img class="gameDivPlatform" src="images/social_icons/logo_itchio.png"> </a>
+            `
+            break;
         case ("xeno_duel"):
             platforms.innerHTML += `
                 <a href = "https://play.google.com/store/apps/details?id=com.maxgamestudio.xenoduel" target="_blank" title="Play on Android"> <img class="gameDivPlatform" src="images/social_icons/logo_android.png"> </a>
