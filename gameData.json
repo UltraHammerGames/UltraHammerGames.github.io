@@ -1,0 +1,121 @@
+{
+    "all_blight_long": {
+        "title": "ALL BLIGHT LONG",
+        "font": "brk",
+        "h2_font_size": "clamp(32px, 5vw, 64px)",
+        "website": {
+            "url": "https://ultrahammergames.github.io/AllBlightLong/",
+            "color": "#ffff66",
+            "text": "Click here for more information!"
+        },
+        "genres": ["2D", "Action", "Platforming"],
+        "description": "New Blancastel, 1989.<br>On one fateful autumn night, the bustling city is engulfed by an ancient living plague that infects its populace and decays the structures that uphold it. Amongst the destruction and panic, a lone teenager, the descendant of the saint who purged the plague centuries ago, stands untainted. Realizing his destiny is calling, Mikhail St. Martin conjures his dormant illuminating powers and ventures towards the source of the blight to eradicate it once and for all.<br><br>Up to four players run, jump, and zap their way through levels filled with hazardous terrain and horrific enemies. However, there is another force they must beware of: the other players! While waiting for their turn, they can unleash surprise attacks and curses to sabotage the user's run. Precise control over Mikhail, knowledge of his toolset, and ability to overcome incoming curses are paramount to success. To be crowned the victor, each participant must progress further than their rivals with a limited number of retries.",
+        "art": {
+            "caption": "KEY ART BY <a href='https://www.twitch.tv/candi_cat_cari' target='_blank'>CANDI_CAT_CARI</a><br>BACKGROUND ART BY <a href='https://www.fiverr.com/thodorislaourde' target='_blank'>LAOURDE</a>"
+        },
+        "screenshot_count": 2,
+        "platforms": [
+            {
+                "url": "https://ultrahammergames.itch.io/all-blight-long",
+                "icon": "logo_itchio.png",
+                "title": "itch.io"
+            }
+        ]
+    },
+
+    "xeno_duel": {
+        "title": "XENO DUEL",       
+        "font": "VenusRising",
+        "genres": ["Strategy"],
+        "published": "June 2025",
+        "description": "At some point someone must have asked: “What if chess had aliens with rocket launchers?”<br><br>Two players command opposing factions of colorful aliens, fighting for dominance of an unknown planet. Armies are comprised of disposable yet numerous Soldiers, powerful Tanks, and supportive UFOs, each with unique attack methods and ranges. To claim victory, each army maneuvers around the battlefield to take control of the central area for a specified number of turns. But if that fails, they can just blow up all of their opponents.",
+        "team_members": [
+            "Daniel Madan - Gameplay programmer, Menu programmer, Main menu & drafting music",
+            "Roberto Meznaric - Gameplay programmer, Scenario designer, Lead artist & 3D modeler, Battle & victory music"
+        ],
+        "art": {
+            "caption": "Game art made by Bear Mug"
+        },
+        "platforms": [
+            {
+                "url": "https://play.google.com/store/apps/details?id=com.maxgamestudio.xenoduel",
+                "icon": "logo_android.png",
+                "title": "Play on Android"
+            },
+            {
+                "url": "https://apps.apple.com/us/app/xeno-duel/id6746754543",
+                "icon": "logo_apple.png",
+                "title": "Play on Apple"
+            },
+            {
+                "url": "https://ultrahammergames.itch.io/xeno-duel",
+                "icon": "logo_itchio.png",
+                "title": "itch.io"
+            }
+        ]
+    },
+
+    "soleil_survivor": {
+        "title": "SOLEIL SURVIVOR",
+        "font": "Cryptik",
+        "genres": ["3D", "Action"],
+        "published": "Oct 2024",
+        "description": "Control a lost shadow creature that is being hunted by a gang of solar-powered skulls in a gloomy forest. The sun rays are harmful to the creature's shadowy body, so aim to avoid them for as long as possible! Features a leaderboard and records to save players' top performances and controller support.",
+        "screenshot_count": 2,
+        "platforms": [
+            {
+                "url": "https://store.steampowered.com/app/3222430/Soleil_Survivor/",
+                "icon": "logo_steam.png",
+                "title": "Play on Steam"
+            },
+            {
+                "url": "https://ultrahammergames.itch.io/soleil-survivor",
+                "icon": "logo_itchio.png",
+                "title": "itch.io"
+            }
+        ],        
+        "h3_size": 1.5
+    },
+
+    "descendant": {
+        "title": "DESCENDANT",
+        "font": "Mordred",
+        "genres": ["RPG", "Roguelite"],
+        "published": "Jul 2024 (Demo)",
+        "description": "Descendant is a 2D dungeon exploration game with roguelite elements and turn-based RPG combat. Controlling a team of 4 characters, the player explores a mysterious cave filled with dangerous enemies, mystical locations and unclaimed treasure. Go as deep into the cave as you can to discover the true its origin and true nature.",
+        "platforms": [
+            {
+                "url": "https://store.steampowered.com/app/3024520/Descendant/?beta=0",
+                "icon": "logo_steam.png",
+                "title": "Play on Steam"
+            },
+            {
+                "url": "https://ultrahammergames.itch.io/descendant",
+                "icon": "logo_itchio.png",
+                "title": "itch.io"
+            }
+        ],        
+        "h3_size": 1.25
+    },
+
+    "scrabbleman": {
+        "title": "SCRABBLEMAN",
+        "font": "Arial",
+        "genres": ["Puzzle", "Spelling"],
+        "published": "Jun 2024",
+        "description": "A word puzzle game that combines elements of Hangman and Scrabble. The objective is to solve a series of word-guessing puzzles while strategically choosing uncommon letters. Players are awarded points based on their speed and ability to select low-value letters.",
+        "screenshot_count": 3,
+        "platforms": [
+            {
+                "url": "https://store.steampowered.com/app/3000990/Scrabbleman/",
+                "icon": "logo_steam.png",
+                "title": "Play on Steam"
+            },
+            {
+                "url": "https://ultrahammergames.itch.io/scrabbleman",
+                "icon": "logo_itchio.png",
+                "title": "itch.io"
+            }
+        ]
+    }
+}

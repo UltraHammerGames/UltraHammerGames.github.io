@@ -19,7 +19,7 @@ bannerUpdate(1);
 function bannerButton(index = 0) {
     switch (index) {
         case 1:
-            gameCatalogueButton('all_blight_long');
+            window.open("https://ultrahammergames.itch.io/all-blight-long");
             break;
         case 2:
             window.open("https://youtube.com/playlist?list=PLxXFNUhHS1NbBZUXNdyckqSDoHJ8Z4DIX&si=39qwd19hNOn6q2qR");
@@ -54,6 +54,9 @@ function bannerUpdate(direction = 0) {
 ////////////////////////////////////////////////////////////////
 // GAME SELECTION //////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
+
+let gameData = {};
+loadGameData();
 
 let gameCatalogueIndex = 0;
 
@@ -95,6 +98,11 @@ if (window.innerWidth > 1250) {
 gameCatalogueUpdate();
 gameRestrictionsSetup();
 gameDivUpdate();
+
+async function loadGameData() {
+    const response = await fetch('./gameData.json');
+    gameData = await response.json();
+}
 
 function gameCatalogueUpdate(direction = 0) {
     gameCatalogueIndex += direction;
@@ -211,7 +219,6 @@ function createGamesCatalogueRow(gamesCatalogueTableRow, categoryName, valueList
     gamesCatalogueTableRow.innerHTML = ``;
 
     for (let i = 0; i < valueList.length; i++) {
-        console.log(valueList[i]);
         const gamesCatalogueTableInput = document.createElement('article');
         let classList = "gamesCatalogueTableInput gamesCatalogueTableInputOff";
         if (categoryName == 'platform') { classList = "gamesCatalogueTableInput gamesCatalogueTableInputOffPlatform"; }
@@ -265,12 +272,7 @@ function gameCatalogueButton(gameName) {
 }
 
 function gameDivUpdate(gameName) {
-    if (gameName == undefined) {
-        // gameDivTitle.style.display = "none";
-        // gameDivLeft.style.display = "none";
-        // gameDivRight.style.display = "none";
-    }
-    else {
+    if (gameName != undefined) {
         gameDivTitle.style.display = "";
         gameDivLeft.style.display = "";
         gameDivRight.style.display = "";
@@ -278,14 +280,8 @@ function gameDivUpdate(gameName) {
         gameDivTitle.innerHTML = ``;
         gameDivLeft.innerHTML = ``;
         gameDivRight.innerHTML = ``;
-        
-        let canPlay = true;
-        // if (gameName == 'all_blight_long') {
-        //     canPlay = false;
-        // }
 
-        gameDivTitle.append(getTitle(gameName));
-        
+        gameDivTitle.append(getTitle(gameName));        
         gameDivLeft.append(getWebsite(gameName));        
         gameDivLeft.append(getTags(gameName));        
         gameDivLeft.append(getDate(gameName));        
@@ -297,39 +293,14 @@ function gameDivUpdate(gameName) {
             gameDivRight.append(getGameArt(gameName));    
         }  
         gameDivRight.append(getScreenshots(gameName));        
-        gameDivRight.append(getPlatformIcons(gameName, canPlay));
+        gameDivRight.append(getPlatformIcons(gameName));
 
-        let h3Size = 1.15;
-        let h3Font = '';  
-        
-        switch (gameName) {
-            case ("all_blight_long"):
-                gameDiv.style.backgroundImage = `url("images/game_bgs/all_blight_long_bg.png")`;  
-                h3Font = 'brk';
-                break;
-            case ("xeno_duel"): 
-                gameDiv.style.backgroundImage = `url("images/game_bgs/xeno_duel_bg.png")`;  
-                h3Font = 'VenusRising';
-                break;
-            case ("soleil_survivor"): 
-                gameDiv.style.backgroundImage = `url("images/game_bgs/soleil_survivor_bg.png")`; 
-                h3Font = 'Cryptik';
-                h3Size = 1.5;
-                break;
-            case ("descendant"): 
-                gameDiv.style.backgroundImage = `url("images/game_bgs/descendant_bg.png")`; 
-                h3Font = 'Mordred';
-                h3Size = 1.25;
-                break;
-            case ("scrabbleman"): 
-                gameDiv.style.backgroundImage = `url("images/game_bgs/scrabbleman_bg.png")`; 
-                h3Font = 'Arial';
-                break;
-        }
+        gameDiv.style.backgroundImage = `url("images/game_bgs/${gameName}_bg.png")`;
+        const h3Size = gameData[gameName].h3_size ?? 1.15;
 
         const h3s = document.querySelectorAll('#gameDiv h3');
         h3s.forEach(h3 => {
-            h3.style.fontFamily = h3Font;
+            h3.style.fontFamily = gameData[gameName].font ?? '';
             h3.style.fontSize = h3Size + `em`;
         });
 
@@ -339,51 +310,25 @@ function gameDivUpdate(gameName) {
 
 function getTitle(gameName) {    
     const title = document.createElement('article');
-    switch (gameName) {
-        case ("all_blight_long"):
-            title.innerHTML = `<h2>ALL BLIGHT LONG</h2>`;
-            title.style.fontFamily = `brk`;
-            title.querySelector("h2").style.fontSize = `clamp(32px, 5vw, 64px)`;
-            break;
-        case ("xeno_duel"):
-            title.innerHTML = `<h2>XENO DUEL</h2>`;
-            title.style.fontFamily = `VenusRising`;
-            break;
-        case ("soleil_survivor"):
-            title.innerHTML = `<h2>SOLEIL SURVIVOR</h2>`;
-            title.style.fontFamily = `Cryptik`;
-            // title.style.fontSize = `2.5vh`;
-            break;
-        case ("descendant"):
-            title.innerHTML = `<h2>DESCENDANT</h2>`;
-            title.style.fontFamily = `Mordred`;
-            // title.style.fontSize = `2.5vh`;
-            break;
-        case ("scrabbleman"):
-            title.innerHTML = `<h2>SCRABBLEMAN</h2>`;
-            title.style.fontFamily = `Arial`;
-            // title.style.fontSize = `2.5vh`;
-            break;
-    }
+
+    title.innerHTML = `<h2>${gameData[gameName].title}</h2>`;
+    title.style.fontFamily = `${gameData[gameName].font}`;    
+    title.querySelector("h2").style.fontSize = `${gameData[gameName].h2_font_size}`;
     return title;
 }
 
 function getWebsite(gameName) {
     const section = document.createElement('article');
     
-    switch (gameName) {
-        case ("all_blight_long"):
-            section.innerHTML += `<h3> 
-                <a href = "https://ultrahammergames.github.io/AllBlightLong/" target="_blank" style="color: #ffff66;"> 
-                    Click here for more information! 
-                </a>
-            </h3>`;
-            break;
+    if (!gameData[gameName].website) {
+        return section;
     }
 
-    if (section.innerHTML != "") {
-        section.innerHTML += `<br>`;
-    }
+    section.innerHTML += `<h3> 
+        <a href = "${gameData[gameName].website.url}" target="_blank" style="color: ${gameData[gameName].website.color};"> 
+            ${gameData[gameName].website.text} 
+        </a>
+    </h3><br>`;
 
     return section;
 }
@@ -395,28 +340,14 @@ function getTags(gameName) {
     row.className = "gameDivHalfRow";
     row.innerHTML = `<h3>GENRE:</h3>`;
 
-    switch (gameName) {
-        case ("all_blight_long"):
-            row.innerHTML += `<h4>2D, Action, Platforming</h4>`;
-            // tags.style.fontFamily = `VenusRising`;
-            break;
-        case ("xeno_duel"):
-            row.innerHTML += `<h4>Strategy</h4>`;
-            // tags.style.fontFamily = `VenusRising`;
-            break;
-        case ("soleil_survivor"):
-            row.innerHTML += `<h4>3D, Action</h4>`;
-            // tags.style.fontFamily = `Cryptik`;
-            break;
-        case ("descendant"):
-            row.innerHTML += `<h4>RPG, Roguelite</h4>`;
-            // tags.style.fontFamily = `Mordred`;
-            break;
-        case ("scrabbleman"):
-            row.innerHTML += `<h4>Puzzle, Spelling</h4>`;
-            // tags.style.fontFamily = `Arial`;
-            break;
+    const genreList = document.createElement('h4');
+    for (let i = 0; i < gameData[gameName].genres.length; i++) {
+        if (i > 0) {
+            genreList.innerHTML += `, `;
+        }
+        genreList.innerHTML += `${gameData[gameName].genres[i]}`;
     }
+    row.appendChild(genreList);
 
     tags.appendChild(row);
     return tags;
@@ -428,33 +359,11 @@ function getDate(gameName) {
     const row = document.createElement('div');
     row.className = "gameDivHalfRow";
 
-    row.innerHTML = `<h3>PUBLISHED:</h3>`;
-    switch (gameName) {
-        case ("all_blight_long"):
-            row.innerHTML = `<h4>COMING SOON</h4>`;
-            // date.style.fontFamily = `VenusRising`;
-            // date.style.fontSize = `1.5vw`;
-            break;
-        case ("xeno_duel"):
-            row.innerHTML += `<h4>June 2025</h4>`;
-            // date.style.fontFamily = `VenusRising`;
-            // date.style.fontSize = `1.5vw`;
-            break;
-        case ("soleil_survivor"):
-            row.innerHTML += `<h4>Oct 2024</h4>`;
-            // date.style.fontFamily = `Cryptik`;
-            // date.style.fontSize = `2.5vw`;
-            break;
-        case ("descendant"):
-            row.innerHTML += `<h4>Jul 2024 (Demo)</h4>`;
-            // date.style.fontFamily = `Mordred`;
-            // date.style.fontSize = `2.5vw`;
-            break;
-        case ("scrabbleman"):
-            row.innerHTML += `<h4>Jun 2024</h4>`;
-            // date.style.fontFamily = `Arial`;
-            // date.style.fontSize = `2.5vw`;
-            break;
+    if (!gameData[gameName].published) {
+        row.innerHTML = `<h4>COMING SOON</h4>`;
+    } else {
+        row.innerHTML = `<h3>PUBLISHED:</h3>`;
+        row.innerHTML += `<h4>${gameData[gameName].published}</h4>`;
     }
 
     date.appendChild(row);
@@ -463,67 +372,23 @@ function getDate(gameName) {
 
 function getDescription(gameName) {    
     const date = document.createElement('article');
-    switch (gameName) {
-        case ("all_blight_long"):
-            date.innerHTML = `<p>
-                New Blancastel, 1989.<br>
-                On one fateful autumn night, the bustling city is engulfed by an ancient living plague that infects its populace and decays the structures that uphold it. 
-                Amongst the destruction and panic, a lone teenager, the descendant of the saint who purged the plague centuries ago, stands untainted. 
-                Realizing his destiny is calling, Mikhail St. Martin conjures his dormant illuminating powers and ventures towards the source of the blight to eradicate it once and for all.<br><br>
-
-                Up to eight players run, jump, and zap their way through levels filled with hazardous terrain and horrific enemies.
-                However, there is another force they must beware of: the other players!
-                While waiting for their turn, they can unleash surprise attacks and curses to sabotage the user's run.
-                Precise control over Mikhail, knowledge of his toolset, and ability to overcome incoming curses are paramount to success.
-                To be crowned the victor, each participant must progress further than their rivals with a limited number of retries.
-                </p>`;
-            break;
-        case ("xeno_duel"):
-            date.innerHTML = `<p>
-                At some point someone must have asked: “What if chess had aliens with rocket launchers?”<br><br>
-                Two players command opposing factions of colorful aliens, fighting for dominance of an unknown planet. 
-				Armies are comprised of disposable yet numerous Soldiers, powerful Tanks, and supportive UFOs, each with unique attack methods and ranges. 
-				To claim victory, each army maneuvers around the battlefield to take control of the central area for a specified number of turns. 
-				But if that fails, they can just blow up all of their opponents.
-            </p>`;
-            break;
-        case ("soleil_survivor"):
-            date.innerHTML = `<p>
-                Control a lost shadow creature that is being hunted by a gang of solar-powered skulls in a gloomy forest. 
-                The sun rays are harmful to the creature's shadowy body, so aim to avoid them for as long as possible! 
-                Features a leaderboard and records to save players' top performances and controller support.
-            </p>`;
-            break;
-        case ("descendant"):
-            date.innerHTML = `<p>Descendant is a 2D dungeon exploration game with roguelite elements and turn-based RPG combat. 
-            Controlling a team of 4 characters, the player explores a mysterious cave filled with dangerous enemies, mystical locations and unclaimed treasure. 
-            Go as deep into the cave as you can to discover the true its origin and true nature.</p>`;
-            break;
-        case ("scrabbleman"):
-            date.innerHTML = `<p>
-                A word puzzle game that combines elements of Hangman and Scrabble. 
-                The objective is to solve a series of word-guessing puzzles while strategically choosing uncommon letters. 
-                Players are awarded points based on their speed and ability to select low-value letters.
-            </p>`;
-            break;
-    }
+    date.innerHTML = `<p>${gameData[gameName].description ?? ''}</p>`;
     return date;
 }
 
 function getTeamMembers(gameName) {    
     const teamMembers = document.createElement('article');
-    teamMembers.innerHTML = `<h3>TEAM MEMBERS:</h3>`;
-    switch (gameName) {
-        case ("xeno_duel"):            
-            teamMembers.innerHTML += `<ul>
-                <li> Daniel Madan - Gameplay programmer, Menu programmer, Main menu & drafting music) </li>
-                <li> Roberto Meznaric (<a href = "https://maxgamestudio.com" target="_blank">MAX Game Studio</a>) - Gameplay programmer, Scenario designer, Lead artist & 3D modeler, Battle & victory music) </li>
-            </ul>`;
-            break;
-        default:
-            teamMembers.innerHTML = ``;
-            break;
+
+    if (!gameData[gameName].team_members) {
+        return teamMembers;
     }
+    
+    teamMembers.innerHTML = `<h3>TEAM MEMBERS:</h3>`;
+    const membersList = document.createElement('ul');
+    for (let i = 0; i < gameData[gameName].team_members.length; i++) {
+        membersList.innerHTML += `<li> ${gameData[gameName].team_members[i]} </li>`;
+    }
+    teamMembers.append(membersList);
     return teamMembers;
 }
 
@@ -531,7 +396,7 @@ function getGameArt(gameName) {
     const section = document.createElement('article');
     section.className = "gameDivArtSection";
 
-    if (gameName == "scrabbleman" || gameName == "descendant" || gameName == "soleil_survivor") {
+    if (!gameData[gameName].art) {
         return;
     }
 
@@ -540,24 +405,10 @@ function getGameArt(gameName) {
     section.append(newGameDivArt);
 
     const newGameDivArtCaption = document.createElement('article');
-    switch (gameName) {
-        case("all_blight_long"):
-            newGameDivArtCaption.innerHTML = `<h3 style="font-size: 30vh">
-                KEY ART BY <a href = "https://www.twitch.tv/candi_cat_cari" target="_blank">CANDI_CAT_CARI</a> <br>
-                BACKGROUND ART BY <a href = "https://www.fiverr.com/thodorislaourde" target="_blank">LAOURDE</a>
-            </h3>`
-            break;
-        case("xeno_duel"):
-            newGameDivArtCaption.style.fontSize = '3px';
-            newGameDivArtCaption.innerHTML = `<h3>
-                Game art made by Bear Mug
-            </h3>`
-            break;
-    }
-
+    newGameDivArtCaption.innerHTML = `<h3> ${gameData[gameName].art.caption} </h3>`;
     
     gameDivArtCaption = newGameDivArtCaption;
-    section.append(gameDivArtCaption);
+    section.append(newGameDivArtCaption);
 
     return section;
 }
@@ -566,13 +417,7 @@ function getScreenshots(gameName) {
     const section = document.createElement('article');
     section.className = "gameDivScreenshotSection";
     
-    let j = 4;
-
-    switch (gameName) {
-        case ("all_blight_long"): j = 2; break;
-        case ("soleil_survivor"): j = 2; break;
-        case ("scrabbleman"): j = 3; break;
-    }
+    const screenshotCount = gameData[gameName].screenshot_count ?? 4;
 
     const newGameDivScreenshotBig = document.createElement('article');
     newGameDivScreenshotBig.className = "gameDivHalfScreenshotBig";
@@ -585,7 +430,7 @@ function getScreenshots(gameName) {
     
     section.append(gameDivScreenshotBig);
 
-    for (let i = 0; i < j; i++) { 
+    for (let i = 0; i < screenshotCount; i++) { 
         const parent = document.createElement('article');
         parent.className = "gameDivScreenshotParent";
     
@@ -603,58 +448,20 @@ function updateScreenshotBig(gameName = "", index = 0) {
     gameDivScreenshotBig.innerHTML = `<img src="images/game_screenshots/${gameName}${index + 1}.png">`;
 }
 
-function getPlatformIcons(gameName, canPlay) {    
+function getPlatformIcons(gameName) {    
     const platforms = document.createElement('article');
     platforms.className = "gameDivPlatformParent";
     
     platforms.innerHTML = ``;
-    if (canPlay) { platforms.innerHTML += `<h3 style="margin-bottom: 1vw;">PLAY IT NOW!</h3>`; }
+    if (gameData[gameName].canPlay == false) { 
+        return platforms; 
+    } 
 
-    switch (gameName) {
-        case ("all_blight_long"):
-            platforms.innerHTML += `
-                <a href = "https://ultrahammergames.itch.io/all-blight-long" target="_blank" title="itch.io"> <img class="gameDivPlatform" src="images/social_icons/logo_itchio.png"> </a>
-            `
-            break;
-        case ("xeno_duel"):
-            platforms.innerHTML += `
-                <a href = "https://play.google.com/store/apps/details?id=com.maxgamestudio.xenoduel" target="_blank" title="Play on Android"> <img class="gameDivPlatform" src="images/social_icons/logo_android.png"> </a>
-                <a href = "https://apps.apple.com/us/app/xeno-duel/id6746754543" target="_blank" title="Play on Apple"> <img class="gameDivPlatform" src="images/social_icons/logo_apple.png"> </a>
-                <a href = "https://ultrahammergames.itch.io/xeno-duel" target="_blank" title="itch.io"> <img class="gameDivPlatform" src="images/social_icons/logo_itchio.png"> </a>
-            `
-            break;
-        case ("soleil_survivor"):
-            platforms.innerHTML += `
-                <a href = "https://store.steampowered.com/app/3222430/Soleil_Survivor/" target="_blank" title="Play on Steam"> <img class="gameDivPlatform"  src="images/social_icons/logo_steam.png"> </a>
-                <a href = "https://ultrahammergames.itch.io/soleil-survivor" target="_blank" title="Steam"> <img class="gameDivPlatform"  src="images/social_icons/logo_itchio.png"> </a>
-            `
-            break;
-        case ("descendant"):
-            platforms.innerHTML += `
-                <a href = "https://store.steampowered.com/app/3024520/Descendant/?beta=0" target="_blank" title="Play on Steam"> <img class="gameDivPlatform"  src="images/social_icons/logo_steam.png"> </a>
-                <a href = "https://ultrahammergames.itch.io/descendant" target="_blank" title="Steam"> <img class="gameDivPlatform"  src="images/social_icons/logo_itchio.png"> </a>
-            `
-            break;
-        case ("scrabbleman"):
-            platforms.innerHTML += `
-                <a href = "https://store.steampowered.com/app/3000990/Scrabbleman/" target="_blank" title="Play on Steam"> <img class="gameDivPlatform"  src="images/social_icons/logo_steam.png"> </a>
-                <a href = "https://ultrahammergames.itch.io/scrabbleman" target="_blank" title="Steam"> <img class="gameDivPlatform"  src="images/social_icons/logo_itchio.png"> </a>
-            `
-            break;
+    platforms.innerHTML += `<h3 style="margin-bottom: 1vw;">PLAY IT NOW!</h3>`; 
+    for (let i = 0; i < gameData[gameName].platforms.length; i++) { 
+        platforms.innerHTML += `<a href = ${gameData[gameName].platforms[i].url} target="_blank" title=${gameData[gameName].platforms[i].name}> <img class="gameDivPlatform" src="images/social_icons/${gameData[gameName].platforms[i].icon}"> </a>`;
     }
 
-    `<table class="footerTable">
-                    <tr>
-                        <th> <a href = "https://store.steampowered.com/search/?developer=Ultra%20Hammer%20Games" target="_blank" title="Steam"> <img src="images/social_icons/logo_steam.png"> </a> </th>
-                        <th> <a href = "https://ultrahammergames.itch.io/" target="_blank" title="itch.io"> <img src="images/social_icons/logo_itchio.png"> </a> </th>
-                        <th> <a href = "https://www.linkedin.com/company/ultrahammergames" target="_blank" title="LinkedIn"> <img src="images/social_icons/logo_linkedin.png"> </a> </th>
-                        <th> <a href = "https://discord.gg/yUeUxNrTTu" target="_blank" title="Discord server"> <img src="images/social_icons/logo_discord.png"> </a> </th>
-                        <th> <a href = "https://www.youtube.com/@UltraHammerGames" target="_blank" title="YouTube"> <img src="images/social_icons/logo_youtube.png"> </a> </th>
-                        <th> <a href = "https://www.instagram.com/ultrahammergames/" target="_blank" title="Instagram"> <img src="images/social_icons/logo_instagram.png"> </a> </th>
-                        <th> <a href = "https://x.com/UltraHammerGame" target="_blank" title="Twitter/X"> <img src="images/social_icons/logo_twitter.png"> </a> </th>
-                        <th> <a href = "https://www.reddit.com/r/UltraHammerGames/" target="_blank" title="Reddit"> <img src="images/social_icons/logo_reddit.png"> </a> </th>
-                    </tr>
-                </table>`
     return platforms;
 }
 
