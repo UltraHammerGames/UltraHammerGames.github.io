@@ -62,10 +62,19 @@ let gameCatalogueIndex = 0;
 
 const gamesCatalogueWrapper = document.querySelector('.gamesCatalogueWrapper');
 const gamesCatalogueViewport = document.querySelector('.gamesCatalogueViewport');
-const gamesCatalogueItemWidth = document.querySelectorAll('.gamesCatalogueItem')[0].offsetWidth + parseFloat(getComputedStyle(document.querySelectorAll('.gamesCatalogueItem')[0]).marginRight) + parseFloat(getComputedStyle(document.querySelectorAll('.gamesCatalogueItem')[0]).marginLeft);
 
 const allItems = document.querySelectorAll('.gamesCatalogueItem');
 var currentItems = []
+
+function gamesCatalogueItemWidth() {
+    const item = allItems[0];
+    const style = getComputedStyle(item);
+    return item.offsetWidth + parseFloat(style.marginRight) + parseFloat(style.marginLeft);
+}
+
+function gamesCatalogueItemsPerView() {
+    return Math.floor(gamesCatalogueViewport.offsetWidth / gamesCatalogueItemWidth());
+}
 
 const gameCatalogueLeft = document.getElementById("gameCatalogueLeft");
 gameCatalogueLeft.onclick = function() {gameCatalogueUpdate(-1)};
@@ -99,16 +108,20 @@ gameCatalogueUpdate();
 gameRestrictionsSetup();
 gameDivUpdate();
 
+window.addEventListener('resize', () => gameCatalogueUpdate());
+
 async function loadGameData() {
     const response = await fetch('./gameData.json');
     gameData = await response.json();
 }
 
 function gameCatalogueUpdate(direction = 0) {
-    gameCatalogueIndex += direction;
-    gameCatalogueIndex = Math.max(0, Math.min(gameCatalogueIndex, allItems.length - 1 - Math.floor(gamesCatalogueViewport.offsetWidth / gamesCatalogueItemWidth)));
+    const itemsPerView = gamesCatalogueItemsPerView();
 
-    gamesCatalogueWrapper.style.transform = `translateX(-${gameCatalogueIndex * gamesCatalogueItemWidth + 1}px)`;
+    gameCatalogueIndex += direction;
+    gameCatalogueIndex = Math.max(0, Math.min(gameCatalogueIndex, allItems.length - 1 - itemsPerView));
+
+    gamesCatalogueWrapper.style.transform = `translateX(-${gameCatalogueIndex * gamesCatalogueItemWidth() + 1}px)`;
 
     currentItems = [];
     for (let i = 0; i < allItems.length - 1; i++) {
@@ -164,14 +177,14 @@ function gameCatalogueUpdate(direction = 0) {
         gameCatalogueLeft.style.display = "";
     }
     
-    if (gameCatalogueIndex >= (currentItems.length - 3)) {
+    if (gameCatalogueIndex >= (currentItems.length - itemsPerView)) {
         gameCatalogueRight.style.display = "none";
     }
     else {
         gameCatalogueRight.style.display = "";
     }
 
-    if (gameCatalogueIndex > 0 && currentItems.length <= 3) {
+    if (gameCatalogueIndex > 0 && currentItems.length <= itemsPerView) {
         gameCatalogueIndex = 0;
         gamesCatalogueWrapper.style.transform = `translateX(0px)`;
         gameCatalogueLeft.style.display = "none";
