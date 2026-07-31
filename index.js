@@ -67,7 +67,7 @@ const allItems = document.querySelectorAll('.gamesCatalogueItem');
 var currentItems = []
 
 function gamesCatalogueItemWidth() {
-    const item = allItems[0];
+    const item = Array.prototype.find.call(allItems, el => el.offsetWidth > 0) || allItems[0];
     const style = getComputedStyle(item);
     return item.offsetWidth + parseFloat(style.marginRight) + parseFloat(style.marginLeft);
 }
